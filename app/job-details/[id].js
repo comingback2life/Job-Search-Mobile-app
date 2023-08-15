@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import { ActivityIndicator, RefreshControl, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import useFetch from '../../hook/useFetch';
 import { COLORS, SIZES, icons } from '../../constants';
-import { Company, JobTabs, ScreenHeaderBtn } from '../../components';
+import { Company, JobAbout, JobTabs, ScreenHeaderBtn, Specifics } from '../../components';
+const tabs = ['About', 'Qualifications', 'Responsibilities'];
 const JobDetails = () => {
     const [refreshing, setRefreshing] = useState(false);
+    const [activeTab, setActiveTab] = useState(tabs[0]);
     const onRefresh = () => {
 
     };
@@ -14,6 +16,17 @@ const JobDetails = () => {
     const { data, isLoading, error, refetch } = useFetch('job-details', {
         job_id: params?.id
     });
+
+    const displayTabContent = () => {
+        switch (activeTab) {
+            case 'Qualifications':
+                return <Specifics title='Qualifications' points={data[0].job_highlights?.Qualifications ?? ['N/A']} />;
+            case 'About':
+                return <JobAbout info={data[0].job_description ?? 'No data provided'} />;
+            case 'Responsibilities':
+                return <Specifics title='Responsibilities' points={data[0].job_highlights?.Responsibilities ?? ['N/A']} />;
+        }
+    };
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
             <Stack.Screen
@@ -43,8 +56,8 @@ const JobDetails = () => {
                             companyName={data[0].employer_name}
                             location={data[0].job_country}
                         />
-                        <JobTabs />
-
+                        <JobTabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
+                        {displayTabContent()}
                     </View>)}
                 </ScrollView>
             </>
