@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ActivityIndicator, RefreshControl, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import useFetch from '../../hook/useFetch';
 import { COLORS, SIZES, icons } from '../../constants';
-import { Company, JobAbout, JobTabs, ScreenHeaderBtn, Specifics } from '../../components';
+import { Company, JobAbout, JobFooter, JobTabs, ScreenHeaderBtn, Specifics } from '../../components';
 const tabs = ['About', 'Qualifications', 'Responsibilities'];
 const JobDetails = () => {
     const [refreshing, setRefreshing] = useState(false);
@@ -60,6 +60,7 @@ const JobDetails = () => {
                         {displayTabContent()}
                     </View>)}
                 </ScrollView>
+                <JobFooter url={data[0]?.job_google_link ?? 'https://www.samippokharel.com.np'} />
             </>
         </SafeAreaView >
     );
