@@ -1,5 +1,5 @@
 import { Stack, useRouter, useSearchParams } from 'expo-router';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { ActivityIndicator, RefreshControl, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import useFetch from '../../hook/useFetch';
 import { COLORS, SIZES, icons } from '../../constants';
@@ -8,9 +8,11 @@ const tabs = ['About', 'Qualifications', 'Responsibilities'];
 const JobDetails = () => {
     const [refreshing, setRefreshing] = useState(false);
     const [activeTab, setActiveTab] = useState(tabs[0]);
-    const onRefresh = () => {
-
-    };
+    const onRefresh = () => useCallback(() => {
+        setRefreshing(true);
+        refetch();
+        setRefreshing(false);
+    }, []);
     const params = useSearchParams();
     const router = useRouter();
     const { data, isLoading, error, refetch } = useFetch('job-details', {

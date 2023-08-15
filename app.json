@@ -4,7 +4,19 @@
     "web": {
       "bundler": "metro"
     },
-    "name": "RN-App",
-    "slug": "RN-App"
+    "name": "Job Search RN",
+    "slug": "job-search-rn",
+    "extra": {
+      "eas": {
+        "projectId": "01ba6ec7-8ad8-44b3-a8c5-ecc5006bc853"
+      }
+    },
+    "owner": "karimbenzema7",
+    "android": {
+      "package": "com.karimbenzema7.jobsearchrn"
+    },
+    "ios": {
+      "bundleIdentifier": "com.karimbenzema7.jobsearchrn"
+    }
   }
 }
