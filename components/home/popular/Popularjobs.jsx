@@ -8,7 +8,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import useFetch from '../../../hook/useFetch';
 const Popularjobs = () => {
   const { data, isLoading, error } = useFetch('search', {
-    query: 'Software Developer in Sydney',
+    query: 'React developer',
     num_pages: 1,
   });
   const router = useRouter();
@@ -27,12 +27,12 @@ const Popularjobs = () => {
           <Text>Something went wrong</Text>
         ) : (
           <FlatList
-            data={[1, 2, 3, 4, 5, 6, 7]}
-            renderItem={(item) => <PopularJobCard item={item} />}
+            data={data}
+            renderItem={({ item }) => <PopularJobCard item={item} />}
             keyExtractor={(item) => item?.job_id}
             contentContainerStyle={{ columnGap: SIZES.medium }}
             horizontal
-          ></FlatList>
+          />
         )}
         {/* This is where the jobs are going */}
       </View>
