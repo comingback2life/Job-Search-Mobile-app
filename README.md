@@ -1,14 +1,17 @@
-# Expo Router Example
+# Mobile App to Search using JSearch API 
 
-Use [`expo-router`](https://expo.github.io/router) to build native navigation using files in the `app/` directory.
+Fetches Jobs from : 
+``` https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch```
 
 ## 🚀 How to use
 
-```sh
-npx create-expo-app -e with-router
-```
+Open this link on any device and scan the QR code : exp://exp.host/@karimbenzema7/job-search-rn?release-channel=default 
 
-## 📝 Notes
+You will need Expo Go to be installed inorder to use it.
 
-- [Expo Router: Docs](https://expo.github.io/router)
-- [Expo Router: Repo](https://github.com/expo/router)
+## Still can't access ? 
+
+Please download the code and run the build. 
+
+
+
