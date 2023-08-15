@@ -12,6 +12,8 @@ const Popularjobs = () => {
     num_pages: 1,
   });
   const router = useRouter();
+  const [selectedJob, setSelectedJob] = useState(null);
+  const handleCardPress = () => {};
   return (
     <View style={styles.container}>
       <View style={styles.header}>
